@@ -48,7 +48,8 @@
           </div><!-- end .header-btns -->
         </div><!-- end .header-wrapper -->
         <div class="header-contacts">
-          <p class="header-contacts__text">с 10 до 20, ежедневно<br><a class="header-contacts__tel" href="tel:+78124502525">8 812 450-25-25</a></p>
+          <p class="header-contacts__text">с 10 до 20, ежедневно</p>
+          <a class="header-contacts__tel" href="tel:+78124502525">8 812 450-25-25</a>
         </div><!-- end .header-contacts -->
 
 
@@ -60,16 +61,18 @@
         </section>
         <section class="offer">
           <h2 class="offer__text">Крем-брюле и пломбир с малиновым джемом</h2>
-          <a href="#" class="offer__btn">Давайте оба!</a>
+          <a href="#" class="btn-basic offer__btn">Давайте оба!</a>
         </section>
         <div class="content">
           <article class="gift gift--raspberry">
             <h3 class="gift__title">Малинка даром!</h3>
             <p class="gift__text">При покупке 2 кг любого фруктового мороженого, добавим в Ваш заказ банку малинового варенья бесплатно.</p>
+            <a href="#" class="btn-basic gift__btn">Хочу варенье!</a>
           </article>
           <article class="gift gift--chocolate">
             <h3 class="gift__title">Шоколадки даром!</h3>
             <p class="gift__text">При покупке 2 кг пломбира, добавим в Ваш заказ упаковку вкуснейшей шоколадной присыпки совершенно бесплатно.</p>
+            <a href="#" class="btn-basic gift__btn">Хочу шоколадки!</a>
           </article>
           <h2 class="visually-hidden">Хиты продаж</h2>
           <article class="goods goods--hit"></article>
@@ -88,20 +91,25 @@
               <li class="about-shop__item about-shop__item--leaf">
                 Для приготовления мороженого используются настоящие сливки и молоко высочайшего качества. Все дополнительные ингредиенты и добавки произведены из натурального, экологически чистого сырья.
               </li>
-              <li class="about-shop__item about-shop__item--thermometer"></li>
+              <li class="about-shop__item about-shop__item--thermometer">
+                Доставка нашего мороженого до заказчиков осуществляется в специальном термопаке, который не дает мороженому растаять в пути и позволяет сохранить превосходный вкус.
+              </li>
             </ul>
           </section><!-- end .about-shop -->
           <aside class="new-post">
-            <h3 class="new-post__title"></h3>
-            <a href="" class="new-post__link">10 способов сервировки фруктовых щербетов к столу</a>
+            <p class="new-post__title">Новое в нашем блоге</p>
+            <a href="#" class="new-post__link">10 способов сервировки фруктовых щербетов к столу</a>
           </aside>
           <section class="subscription">
-            <p class="subscription__text"></p>
-            <form action="" class="subscription__form">
-              <label for="" class="subscription__label"></label>
-              <input type="text" class="subscription__email">
-              <button class="subscription__btn"></button>
-            </form><!-- end .subscription__form -->
+            <div class="subscription__wrapper">
+              <p class="subscription__text">Подпишитесь на нашу сладкую рассылку и будьте всегда в курсе всего самого вкусного, что у нас происходит. Обещаем не спамить и не слать всякой ненужной ерунды. Честно =)</p>
+              <form action="https://echo.htmlacademy.ru" method="POST" class="subscription__form">
+                <label for="subscription-input" class="subscription__label"></label>
+                <input type="text" id="subscription-input" class="subscription__input" placeholder="email@example.com">
+                <button type="submit" class="btn-basic subscription__btn">Отправить</button>
+              </form><!-- end .subscription__form -->
+            </div><!-- end .subscription__wrapper -->
+
           </section><!-- end .subscription -->
         </div><!-- end .main-content -->
       </main>
