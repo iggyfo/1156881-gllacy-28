@@ -40,8 +40,9 @@
   --basic-post-text: #5a5a5a; /*text color of post*/
   --basic-dirty-grey: rgba(178, 178, 178, 0.52); /*border color of subscription__input*/
   --basic-light-grey: #999999; /*placeholder color of subscription__input*/
-}
+  --basic-light-white: #fefefe; /*background color of contacts*/
 
+}
 /* * * global * * */
 html {
   height: 100%;
@@ -231,6 +232,7 @@ body {
   grid-template-columns: repeat(4, 267px);
   grid-column-gap: 26px;
   grid-row-gap: 40px;
+  margin-bottom: 40px;
 }
 
 /* gifts */
@@ -393,6 +395,36 @@ body {
   padding: 14px 19px 13px 19px;
   border: 0;
 }
-/*
 
-*/
+/* * * footer section * * */
+.footer-map {
+  position: relative;
+  min-height: 430px;
+  background-image: url("../img/map.png");
+  background-repeat: no-repeat;
+}
+
+.contacts {
+  position: absolute;
+  top: 62px;
+  right: 27px;
+  box-sizing: border-box;
+  width: 303px;
+  padding: 32px 25px;
+  border-radius: 16px;
+  background-color: var(--basic-light-white);
+  color: var(--basic-light-black);
+}
+
+.contacts__adress {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 30px;
+}
+
+.contacts__adress b {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+}
