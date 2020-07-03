@@ -41,6 +41,12 @@
   --basic-dirty-grey: rgba(178, 178, 178, 0.52); /*border color of subscription__input*/
   --basic-light-grey: #999999; /*placeholder color of subscription__input*/
   --basic-light-white: #fefefe; /*background color of contacts*/
+  --basic-trans-black: rgba(255, 255, 255, 0.5); /*border of social icons*/
+  --basic-light-trans-black: rgba(255, 255, 255, 0.3); /*color of links bottom border*/
+  --basic-dark-grey: rgba(248, 247, 244, 0.2); /*bg of hovered goods*/
+  --basic-dark-black: rgba(0, 0, 0, 0.4); /*box shadow for hovered goods*/
+
+
 
 }
 /* * * global * * */
@@ -77,7 +83,7 @@ body {
 }
 
 .btn-basic {
-  padding: 15px 22px 16px 22px;
+  padding: 11px 22px;
   background: linear-gradient(180deg, var(--basic-light-tomato) 0%, var(--basic-tomato) 100%);
   box-shadow: 0px 2px 2px var(--basic-tomato-shadow);
   border-radius: 70px;
@@ -88,7 +94,7 @@ body {
   line-height: 24px;
   font-weight: bold;
   text-align: center;
-
+  border: 0;
 }
 
 /* * * index * * */
@@ -116,12 +122,12 @@ body {
 .site-nav__item {
   line-height: 18px;
   padding-right: 32px;
-  text-decoration: underline;
 }
 
 .site-nav__link {
   color: var(--basic-white);
-  text-decoration-color: var(--basic-light-olive);
+  text-decoration: none;
+  border-bottom: 1px solid var(--basic-light-trans-black);
 }
 
 .user-nav {
@@ -279,8 +285,85 @@ body {
 
 /* goods */
 .goods {
+  position: relative;
+  box-sizing: border-box;
   grid-column: span 1;
   min-height: 324px;
+}
+
+.goods:hover {
+  padding-bottom: 72px;
+  margin-bottom: -72px;
+  background-color: var(--basic-dark-grey);
+  border-radius: 5px;
+  box-shadow: 0px 20px 20px 0px var(--basic-dark-black);
+}
+
+.goods:hover .goods__btn {
+  display: block;
+}
+
+.goods__img {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.goods__cost {
+  position: absolute;
+  top: 213px;
+  left: 7px;
+  margin: 0;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.goods__weight {
+  position: relative;
+  padding-left: 34px;
+  font-size: 30px;
+}
+
+.goods__weight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 3px;
+  background-image: url("../img/ruble.svg");
+  background-repeat: no-repeat;
+  width: 31px;
+  height: 36px;
+}
+
+.goods__title {
+  margin: 0;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.goods__link {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--basic-white);
+  border-bottom: 1px solid var(--basic-light-trans-black);
+  text-decoration: none;
+}
+
+.goods--hit::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  width: 61px;
+  height: 61px;
+  background-image: url("../img/hit.svg");
+}
+
+.goods__btn {
+  display: none;
+  position: absolute;
+  left: 30px;
+  bottom: 15px;
+  padding-left: 18px;
+  padding-right: 18px;
 }
 
 /* about shop */
@@ -391,17 +474,19 @@ body {
   line-height: 24px;
 }
 
-.subscription__btn {
-  padding: 14px 19px 13px 19px;
-  border: 0;
+/* location */
+.location {
+  width: 100%;
+  min-height: 430px;
+  background-image: url("../img/map-pin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* * * footer section * * */
-.footer-map {
+.location-container {
   position: relative;
-  min-height: 430px;
-  background-image: url("../img/map.png");
-  background-repeat: no-repeat;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .contacts {
@@ -428,3 +513,121 @@ body {
   font-size: 18px;
   line-height: 24px;
 }
+
+.contacts__order {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.contacts__link {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  color: var(--basic-light-black);
+}
+
+.contacts__btn {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+/* * * footer section * * */
+.footer {
+  display: flex;
+  padding: 0 27px;
+  padding-top: 18px;
+  padding-bottom: 28px;
+}
+
+/* social */
+.social {
+  width: 186px;
+  margin-top: 17px;
+  margin-right: 235px;
+}
+
+.social__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social__btn {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: top;
+  opacity: 0.8;
+  background-color: transparent;
+  border: 3px solid var(--basic-trans-black);
+  border-radius: 50%;
+}
+
+/* footer info */
+.footer-info {
+  width: 30%;
+  margin-top: 12px;
+}
+
+.footer-info__list {
+  margin: 0;
+  padding: 0;
+  min-height: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.footer-info__heart {
+  position: relative;
+  font-weight: bold;
+}
+
+.footer-info__heart svg {
+  position: absolute;
+  top: 6px;
+  left: -6px;
+}
+
+.footer-info__item {
+  padding-left: 20px;
+  min-width: 110px;
+}
+
+.footer-info__link {
+  font-size: 13px;
+  color: var(--basic-white);
+  text-decoration: none;
+  border-bottom: 1px solid var(--basic-light-trans-black);
+}
+
+/* footer copyright */
+.footer__copyright {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__text {
+  margin: 0;
+  font-size: 12px;
+}
+
+.footer__link {
+  color: var(--basic-white);
+  text-decoration: none;
+  border-bottom: 1px solid var(--basic-light-trans-black);
+}
+
+
+/*
+Вопросы:
+1. Нужно ли задавать 
+*/
