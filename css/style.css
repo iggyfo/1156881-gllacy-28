@@ -84,6 +84,10 @@ body {
   color: var(--basic-white);
 }
 
+.body-wrapper {
+  min-width: 1200px;
+}
+
 .page-wrapper {
   width: 1200px;
   margin: 0 auto;
@@ -407,7 +411,8 @@ body {
 }
 
 .input--search {
-  width: 94%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* login form */
@@ -538,13 +543,17 @@ body {
   border: 2px solid var(--basic-white);
   cursor: pointer;
   border-radius: 50%;
+  outline: 0;
+  outline-offset: 0;
 }
 
-.slider__button:hover {
+.slider__button:not(.slider__button--current:hover):hover,
+.slider__button:focus {
   background-color: var(--basic-light-trans-black);
 }
 
-.slider__button--current {
+.slider__button--current,
+.slider__button:active {
   background-color: var(--basic-white);
 }
 
@@ -554,7 +563,7 @@ body {
   grid-template-columns: repeat(4, 267px);
   grid-column-gap: 26px;
   grid-row-gap: 40px;
-  margin-bottom: 76px;
+  margin-bottom: 42px;
 }
 
 /* gifts */
@@ -641,6 +650,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   background-color: var(--basic-light-grey);
+  margin-bottom: 4px;
 }
 
 .goods__cost {
@@ -672,7 +682,6 @@ body {
 }
 
 .goods__title {
-  position: absolute;
   width: 258px;
   top: 280px;
   margin: 0px;
@@ -878,13 +887,14 @@ body {
   margin: 0 auto;
 }
 
+/* contacts */
 .contacts {
   position: absolute;
   top: 62px;
   right: 27px;
   box-sizing: border-box;
   width: 303px;
-  padding: 28px 25px;
+  padding: 28px 25px 39px 25px;
   border-radius: 16px;
   background-color: var(--basic-light-white);
   color: var(--basic-light-black);
@@ -898,6 +908,7 @@ body {
 }
 
 .contacts__adress b {
+  display: block;
   font-weight: bold;
   font-size: 18px;
   line-height: 24px;
@@ -907,7 +918,7 @@ body {
   margin: 0;
   font-size: 14px;
   line-height: 20px;
-  margin-bottom: 27px;
+  margin-bottom: 39px;
 }
 
 .contacts__link {
@@ -953,7 +964,7 @@ body {
   border: 1px solid var(--basic-dirty-grey);
   border-radius: 6px;
   background-color: var(--basic-white);
-  resize: none;
+  resize: vertical;
   padding-left: 14px;
   padding-top: 16px;
   min-height: 154px;
@@ -1104,12 +1115,13 @@ body {
   color: var(--basic-light-black);
 }
 
-.nav-btns--cart:hover svg path {
-  fill: none;
+.user-nav__item--cart:hover .nav-btns--red {
+  fill: var(--basic-red);
 }
 
 /* cart-form */
 .popup--cart {
+  width: 539px;
   padding-right: 15px;
   top: 35px;
   font-size: 13px;
@@ -1122,32 +1134,40 @@ body {
   transition: display 0.6s;
 }
 
+.cart {
+  display: flex;
+  flex-direction: column;
+}
+
 .cart-item {
-  display: grid;
-  grid-template-columns: 22px 46px 247px 121px 64px;
-  row-gap: 13px;
-  padding-right: 5px;
+  display: flex;
+  width: 100%;
+  padding-bottom: 12px;
+}
+
+.cart-item:last-child {
+  padding-bottom: 0px;
 }
 
 .cart-item__link-remove {
- grid-column: span 1;
- padding-top: 10px;
- padding-left: 2px;
+  padding-top: 10px;
+  padding-left: 2px;
+  margin-right: 8px;
 }
 
 .cart-item__img {
-  grid-column: span 1;
   border-radius: 50%;
+  margin-right: 13px;
 }
 
 .cart-item__name {
-  grid-column: span 1;
   margin-top: 10px;
+  width: 247px;
 }
 
 .cart-item__weight {
-  grid-column: span 1;
   margin-top: 10px;
+  margin-right: 26px;
 }
 
 .cart-item__weight span {
@@ -1155,7 +1175,6 @@ body {
 }
 
 .cart-item__cost {
-  grid-column: span 1;
   margin-top: 10px;
 }
 
@@ -1180,7 +1199,7 @@ body {
 }
 
 .button-small {
-  padding: 10px 24px;
+  padding: 10px 14px;
 }
 
 .breadcrumbs-contacts {
@@ -1358,15 +1377,15 @@ body {
   left: 130px;
 }
 
-/* fat-content */
-.fat-content {
+/* radio */
+.radio {
   position: relative;
   padding-left: 31px;
   line-height: 18px;
   cursor: pointer;
 }
 
-.fat-content__icon {
+.radio__icon {
   position: absolute;
   top: -2px;
   left: 0;
@@ -1378,15 +1397,15 @@ body {
   background-size: cover;
 }
 
-.fat-content__icon:hover {
+.radio__icon:hover {
   opacity: 1;
 }
 
-.fat-content__input:checked + .fat-content__icon {
+.radio__input:checked + .radio__icon {
   background-image: url("../img/radio-on.svg");
 }
 
-.fat-content--disabled {
+.radio--disabled {
   opacity: 0.4;
   cursor: default;
 }
@@ -1401,7 +1420,7 @@ body {
   border-radius: 20px;
 }
 
-.filler-item {
+.checkbox {
   position: relative;
   padding-left: 33px;
   padding-right: 21px;
@@ -1409,7 +1428,7 @@ body {
   cursor: pointer;
 }
 
-.filler-item__icon {
+.checkbox__icon {
   position: absolute;
   top: -3px;
   left: 0;
@@ -1420,15 +1439,15 @@ body {
   background-repeat: no-repeat;
 }
 
-.filler-item__icon:hover {
+.checkbox__icon:hover {
   opacity: 1;
 }
 
-.filler-item__checkbox:checked + .filler-item__icon {
+.checkbox__input:checked + .checkbox__icon {
   background-image: url("../img/checkbox-on.svg");
 }
 
-.filler-item__chekbox--disabled {
+.checkbox__chekbox--disabled {
   opacity: 0.4;
   cursor: default;
 }
@@ -1533,22 +1552,3 @@ body {
     transform: translate(50%, 0%);
   }
 }
-/*
--130, 60, -30, 0
-Вопросы:
-По формам:
-1. Не понимаю как .input--search инпут сделать на всю ширину. поставил времненно width: 94%.
-2. В форме обратной связи сообщение делать текстареа или инпут? если текст ареа - как стилизовать в правом нижнем углу?
-3. В корзине товары можно гридами? или желательно таблицей?
-
-по Сортировке:
-1. стилизация Сортировки - можно ли вешать псевдоэлементы на section?
-2. вообще стилизация section - тугая штука, может дивами все сделать?
-3. option - оставить нативным? в винде отображение по макету, на маке по другому.
-
-По чекбоксам:
-1. Задизабленное состояние - иконку мняем, а как дать опасити лэйблу? (он родитель для инпута и иконки) - сделал пока модификатор для лэйбла
-
-По фону:
-1. припереключении фона - нужно чтобы на странице каталога он тоже переключался?
-*/
