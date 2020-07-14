@@ -24,7 +24,7 @@ window.addEventListener("keydown", function(evt) {
 
 
 //slider
-var currentTheme = document.querySelector("body");
+var currentTheme = document.querySelector(".body-wrapper");
 var sliderItemOne = document.querySelector(".slider__item-1");
 var sliderItemTwo = document.querySelector(".slider__item-2");
 var sliderItemThree = document.querySelector(".slider__item-3");
