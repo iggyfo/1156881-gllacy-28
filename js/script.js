@@ -2,6 +2,7 @@ var feedbackForm = document.querySelector(".feedback");
 var feedbackShow = document.querySelector(".popup--feedback");
 var feedbackButton = document.querySelector(".contacts__btn");
 var feedbackClose = document.querySelector(".feedback__close");
+var feedbackInput = document.querySelector(".input--feedback")
 
 feedbackButton.addEventListener("click", function(evt) {
   evt.preventDefault();
@@ -11,6 +12,7 @@ feedbackButton.addEventListener("click", function(evt) {
 feedbackClose.addEventListener("click", function(evt) {
   evt.preventDefault();
   feedbackShow.classList.remove("popup-feedback--visible");
+  feedbackShow.classList.remove("popup-feedback--error");
 })
 
 window.addEventListener("keydown", function(evt) {
@@ -18,10 +20,19 @@ window.addEventListener("keydown", function(evt) {
     if(feedbackShow.classList.contains("popup-feedback--visible")) {
       evt.preventDefault();
       feedbackShow.classList.remove("popup-feedback--visible");
+      feedbackShow.classList.remove("popup-feedback--error");
     }
   }
 })
 
+feedbackForm.addEventListener("submit", function(evt) {
+  if (!feedbackInput.value) {
+    evt.preventDefault();
+    feedbackShow.classList.remove("popup-feedback--error");
+    feedbackShow.offsetWidth = feedbackShow.offsetWidth;
+    feedbackShow.classList.add("popup-feedback--error");
+  }
+})
 
 //slider
 var currentTheme = document.querySelector(".body-wrapper");

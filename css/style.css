@@ -911,6 +911,7 @@ body {
   min-height: 430px;
   background-image: url("../img/map-pin.jpg");
   background-repeat: no-repeat;
+  background-color: var(--basic-grey-card);
   background-size: cover;
   background-position: center
 }
@@ -975,13 +976,15 @@ body {
   position: fixed;
   top: 100px;
   right: 50%;
+  -webkit-animation: bounce 0.6s;
+          animation: bounce 0.6s;
   -webkit-transform: translate(50%);
           transform: translate(50%);
 }
 
-.popup--feedback {
-  -webkit-animation: bounce 0.6s;
-          animation: bounce 0.6s;
+.popup-feedback--error {
+  -webkit-animation: shake 0.6s;
+          animation: shake 0.6s;
 }
 
 .feedback {
@@ -1529,6 +1532,7 @@ body {
 .pagination__link {
   position: relative;
   display: inline-block;
+  vertical-align: baseline;
   padding: 1px 8px;
   margin-right: 5px;
   text-decoration: none;
@@ -1620,5 +1624,55 @@ body {
     opacity: 1;
     -webkit-transform: translate(50%, 0%);
             transform: translate(50%, 0%);
+  }
+}
+
+@-webkit-keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translateX(51%);
+            transform: translateX(51%);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translateX(49%);
+            transform: translateX(49%);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translateX(51%);
+            transform: translateX(51%);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translateX(49%);
+            transform: translateX(49%);
   }
 }
