@@ -556,7 +556,7 @@ body {
 
 .slider__button:not(.slider__button--current:hover):hover,
 .slider__button:focus {
-  background-color: var(--basic-light-trans-black);
+  background-color: var(--basic-white);
 }
 
 .slider__button--current,

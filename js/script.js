@@ -1,82 +1,60 @@
-var feedbackForm = document.querySelector(".feedback");
-var feedbackShow = document.querySelector(".popup--feedback");
-var feedbackButton = document.querySelector(".contacts__btn");
-var feedbackClose = document.querySelector(".feedback__close");
-var feedbackInput = document.querySelector(".input--feedback")
+`use strict`;
 
-feedbackButton.addEventListener("click", function(evt) {
+const feedbackForm = document.querySelector(`.feedback`);
+const feedbackShow = document.querySelector(`.popup--feedback`);
+const feedbackButton = document.querySelector(`.contacts__btn`);
+const feedbackClose = document.querySelector(`.feedback__close`);
+const feedbackInput = document.querySelector(`.input--feedback`)
+
+feedbackButton.addEventListener(`click`, function(evt) {
   evt.preventDefault();
-  feedbackShow.classList.add("popup-feedback--visible");
+  feedbackShow.classList.add(`popup-feedback--visible`);
 })
 
-feedbackClose.addEventListener("click", function(evt) {
+feedbackClose.addEventListener(`click`, function(evt) {
   evt.preventDefault();
-  feedbackShow.classList.remove("popup-feedback--visible");
-  feedbackShow.classList.remove("popup-feedback--error");
+  feedbackShow.classList.remove(`popup-feedback--visible`);
+  feedbackShow.classList.remove(`popup-feedback--error`);
 })
 
-window.addEventListener("keydown", function(evt) {
-  if(evt.keyCode === 27) {
-    if(feedbackShow.classList.contains("popup-feedback--visible")) {
+window.addEventListener(`keydown`, function(evt) {
+  if(evt.key === `ESC`) {
+    if(feedbackShow.classList.contains(`popup-feedback--visible`)) {
       evt.preventDefault();
-      feedbackShow.classList.remove("popup-feedback--visible");
-      feedbackShow.classList.remove("popup-feedback--error");
+      feedbackShow.classList.remove(`popup-feedback--visible`);
+      feedbackShow.classList.remove(`popup-feedback--error`);
     }
   }
 })
 
-feedbackForm.addEventListener("submit", function(evt) {
+feedbackForm.addEventListener(`submit`, function(evt) {
   if (!feedbackInput.value) {
     evt.preventDefault();
-    feedbackShow.classList.remove("popup-feedback--error");
-    feedbackShow.offsetWidth = feedbackShow.offsetWidth;
-    feedbackShow.classList.add("popup-feedback--error");
+    feedbackShow.classList.remove(`popup-feedback--error`);
+    feedbackShow.classList.add(`popup-feedback--error`);
   }
 })
 
-//slider
-var currentTheme = document.querySelector(".body-wrapper");
-var sliderItemOne = document.querySelector(".slider__item-1");
-var sliderItemTwo = document.querySelector(".slider__item-2");
-var sliderItemThree = document.querySelector(".slider__item-3");
-var sliderButtonOne = document.querySelector(".slider__button-1");
-var sliderButtonTwo = document.querySelector(".slider__button-2");
-var sliderButtonThree = document.querySelector(".slider__button-3");
+const ACTIVE_SLIDER_BUTTON_CLASS = `slider__button--current`;
+const ACTIVE_SLIDER_ITEM_CLASS = `slider__item--current`;
+const BODY_THEME_CLASS = `body-wrapper`
+const currentThemeElement = document.querySelector(`.body-wrapper`);
+const sliderButtons = document.querySelectorAll(`.slider__button`);
+const sliderItems = document.querySelectorAll(`.slider__item`);
 
-sliderButtonOne.addEventListener("click", function(evt) {
-  sliderButtonTwo.classList.remove("slider__button--current");
-  sliderButtonThree.classList.remove("slider__button--current");
-  sliderButtonOne.classList.add("slider__button--current");
-  currentTheme.classList.remove("theme-2");
-  currentTheme.classList.remove("theme-3");
-  currentTheme.classList.add("theme-1");
-  sliderItemTwo.classList.remove("slider__item--current");
-  sliderItemThree.classList.remove("slider__item--current");
-  sliderItemOne.classList.add("slider__item--current");
-})
-
-sliderButtonTwo.addEventListener("click", function(evt) {
+const slider = (evt, index) => {
   evt.preventDefault();
-  sliderButtonOne.classList.remove("slider__button--current");
-  sliderButtonThree.classList.remove("slider__button--current");
-  sliderButtonTwo.classList.add("slider__button--current");
-  currentTheme.classList.remove("theme-1");
-  currentTheme.classList.remove("theme-3");
-  currentTheme.classList.add("theme-2");
-  sliderItemOne.classList.remove("slider__item--current");
-  sliderItemThree.classList.remove("slider__item--current");
-  sliderItemTwo.classList.add("slider__item--current");
-})
+  sliderButtons.forEach((button) => button.classList.remove(ACTIVE_SLIDER_BUTTON_CLASS));
+  evt.target.classList.add(ACTIVE_SLIDER_BUTTON_CLASS);
+  sliderItems.forEach((item) => item.classList.remove(ACTIVE_SLIDER_ITEM_CLASS));
+  sliderItems[index].classList.add(ACTIVE_SLIDER_ITEM_CLASS);
+  currentThemeElement.classList.value = ``;
+  currentThemeElement.classList.add(BODY_THEME_CLASS);
+  currentThemeElement.classList.add(`theme-${index + 1}`);
+}
 
-sliderButtonThree.addEventListener("click", function(evt) {
-  evt.preventDefault();
-  sliderButtonOne.classList.remove("slider__button--current");
-  sliderButtonTwo.classList.remove("slider__button--current");
-  sliderButtonThree.classList.add("slider__button--current");
-  currentTheme.classList.remove("theme-1");
-  currentTheme.classList.remove("theme-2");
-  currentTheme.classList.add("theme-3");
-  sliderItemOne.classList.remove("slider__item--current");
-  sliderItemTwo.classList.remove("slider__item--current");
-  sliderItemThree.classList.add("slider__item--current");
+sliderButtons.forEach((button, index) => {
+  button.addEventListener(`click`, (evt) => {
+    slider(evt, index)
+  });
 })
